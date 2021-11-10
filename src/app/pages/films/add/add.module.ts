@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AddPageRoutingModule } from './add-routing.module';
 
 import { AddPage } from './add.page';
-import { ComponentsModule } from 'src/app/components/components.module';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     AddPageRoutingModule,
-    ComponentsModule
+    SharedModule
   ],
   declarations: [AddPage]
 })

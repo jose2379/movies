@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CompaniesPageRoutingModule } from './companies-routing.module';
 
 import { CompaniesPage } from './companies.page';
-import { ComponentsModule } from 'src/app/components/components.module';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     CompaniesPageRoutingModule,
-    ComponentsModule
+    SharedModule
   ],
   declarations: [CompaniesPage]
 })
