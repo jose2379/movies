@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons *ngIf="backButton else menuTemplate" slot="start">
+      <ion-back-button defaultHref="films" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize">{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ng-template #menuTemplate>
+  <ion-buttons slot="start">
+    <ion-menu-button menu="main"></ion-menu-button>
+  </ion-buttons>
+</ng-template>
