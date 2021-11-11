@@ -5,5 +5,8 @@
       "actors": "Actores",
       "companies": "Compañías"
     }
+  },
+  "loader": {
+    "waitMessage": "Cargando. Por favor, espere."
   }
 }
