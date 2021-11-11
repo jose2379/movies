@@ -1,21 +1,37 @@
 <app-header [title]="'menu.options.films' | translate "></app-header>
 
 <ion-content class="ion-padding">
-  <ion-card *ngFor="let pelicula of peliculas | async" [routerLink]="'movies/' + [pelicula.id]">
-    <ion-card-header>
-      <ion-card-title>{{pelicula.title}}</ion-card-title>
-    </ion-card-header>
+  <ion-list>
+    <ion-card *ngFor="let pelicula of peliculas | async" [routerLink]="'movies/' + [pelicula.id]">
+      <ion-card-header>
+        <ion-card-title>{{pelicula.title}}</ion-card-title>
+      </ion-card-header>
 
-    <ion-card-content>
-      <ion-img [src]="pelicula.poster"></ion-img>
-      <ion-chip *ngFor="let genero of pelicula.genre">
-        <ion-label color="primary">#{{genero}}</ion-label>
-      </ion-chip>
-    </ion-card-content>
-  </ion-card>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="add">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+      <ion-card-content>
+        <ion-img *ngIf="pelicula.poster" [src]="pelicula.poster"></ion-img>
+        <ion-chip *ngFor="let genero of pelicula.genre">
+          <ion-label color="primary">#{{genero}}</ion-label>
+        </ion-chip>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-list *ngIf="(peliculas | async) === null">
+    <ion-card *ngFor="let item of skeletonMovies">
+      <ion-card-header>
+        <ion-skeleton-text animated class="skeleton_title"></ion-skeleton-text>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-skeleton-text animated class="skeleton_img"></ion-skeleton-text>
+        <ion-skeleton-text *ngFor="let chip of item" animated class="skeleton_chip"></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink="add">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-list>
+
 </ion-content>

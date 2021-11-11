@@ -10,11 +10,14 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./films.page.scss'],
 })
 export class FilmsPage implements OnInit {
+  skeletonMovies = Array(10);
   peliculas: Observable<Movie[]>;
 
   constructor(public translate: TranslateService, private dataService: DataService) { }
 
   ngOnInit() {
+    this.skeletonMovies.fill([]);
+    this.skeletonMovies = this.skeletonMovies.map(_ => Array(Math.ceil(Math.random() * 5)));
     this.peliculas = this.dataService.getPeliculas();
   }
 
