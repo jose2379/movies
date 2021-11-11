@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-actors',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActorsPage implements OnInit {
 
-  constructor() { }
+  constructor(public trasnlate: TranslateService) { }
 
   ngOnInit() {
   }

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
 
 import { CompaniesPageRoutingModule } from './companies-routing.module';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 import { CompaniesPage } from './companies.page';
-import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,8 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
     FormsModule,
     IonicModule,
     CompaniesPageRoutingModule,
-    SharedModule
+    SharedModule,
+    TranslateModule.forChild()
   ],
   declarations: [CompaniesPage]
 })
