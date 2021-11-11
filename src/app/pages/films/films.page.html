@@ -1,11 +1,21 @@
 <app-header [title]="'menu.options.films' | translate "></app-header>
 
 <ion-content class="ion-padding">
-  Aquí vemos la lista de películas.
-  <ion-button [routerLink]="['/details']" routerLinkActive="router-link-active"  expand="block" fill="clear" shape="round">
-    Ver detalle película
-  </ion-button>
-  <ion-button [routerLink]="['/add']" routerLinkActive="router-link-active"  expand="block" fill="clear" shape="round">
-    <ion-icon slot="start" name="add"></ion-icon>
-  </ion-button>
+  <ion-card *ngFor="let pelicula of peliculas | async" [routerLink]="'movies/' + [pelicula.id]">
+    <ion-card-header>
+      <ion-card-title>{{pelicula.title}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-img [src]="pelicula.poster"></ion-img>
+      <ion-chip *ngFor="let genero of pelicula.genre">
+        <ion-label color="primary">#{{genero}}</ion-label>
+      </ion-chip>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="add">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
