@@ -19,6 +19,11 @@ const routes: Routes = [
     path: 'companies',
     loadChildren: () => import('./pages/companies/companies.module').then( m => m.CompaniesPageModule)
   },
+  {
+    path: '**',
+    redirectTo: 'films',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

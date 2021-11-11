@@ -1,0 +1,9 @@
+{
+  "menu": {
+    "options": {
+      "films": "Películas",
+      "actors": "Actores",
+      "companies": "Compañías"
+    }
+  }
+}

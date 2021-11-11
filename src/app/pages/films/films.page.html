@@ -1,4 +1,4 @@
-<app-header title="Películas"></app-header>
+<app-header [title]="'menu.options.films' | translate "></app-header>
 
 <ion-content class="ion-padding">
   Aquí vemos la lista de películas.
@@ -7,6 +7,5 @@
   </ion-button>
   <ion-button [routerLink]="['/add']" routerLinkActive="router-link-active"  expand="block" fill="clear" shape="round">
     <ion-icon slot="start" name="add"></ion-icon>
-    Add new films
   </ion-button>
 </ion-content>
