@@ -16,7 +16,7 @@ export class DataService {
     return this.httpClient.get<MenuOption[]>('/assets/data/menu-options.json');
   }
 
-  getPeliculas(): Observable<Movie[]> {
+  getMovies(): Observable<Movie[]> {
     return this.httpClient.get<Movie[]>(`${environment.apiUrl}/movies`);
   }
 }

@@ -2,21 +2,21 @@
 
 <ion-content class="ion-padding">
   <ion-list>
-    <ion-card *ngFor="let pelicula of peliculas | async" [routerLink]="'movies/' + [pelicula.id]">
+    <ion-card *ngFor="let movie of movies | async" [routerLink]="'movies/' + [movie.id]">
       <ion-card-header>
-        <ion-card-title>{{pelicula.title}}</ion-card-title>
+        <ion-card-title>{{movie.title}}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
-        <ion-img *ngIf="pelicula.poster" [src]="pelicula.poster"></ion-img>
-        <ion-chip *ngFor="let genero of pelicula.genre">
+        <ion-img *ngIf="movie.poster" [src]="movie.poster"></ion-img>
+        <ion-chip *ngFor="let genero of movie.genre">
           <ion-label color="primary">#{{genero}}</ion-label>
         </ion-chip>
       </ion-card-content>
     </ion-card>
   </ion-list>
 
-  <ion-list *ngIf="(peliculas | async) === null">
+  <ion-list *ngIf="(movies | async) === null">
     <ion-card *ngFor="let item of skeletonMovies">
       <ion-card-header>
         <ion-skeleton-text animated class="skeleton_title"></ion-skeleton-text>

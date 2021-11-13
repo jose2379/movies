@@ -9,13 +9,12 @@ import { Movie } from 'src/app/interfaces/api.interface';
 })
 export class DetailsPage implements OnInit {
 
-  film: Movie = null;
+  movie: Movie = null;
 
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.film = this.activeRoute.snapshot.data.film;
-    console.log(this.activeRoute.snapshot, this.film);
+    this.movie = this.activeRoute.snapshot.data.film;
   }
 
 }
