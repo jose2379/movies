@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { MenuOption } from './interfaces/interface';
+import { MenuOption } from './interfaces/menu.interface';
 import { DataService } from './services/data.service';
 
 @Component({

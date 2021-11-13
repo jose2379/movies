@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Movie } from 'src/app/interfaces/api.interface';
 
 @Component({
   selector: 'app-details',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsPage implements OnInit {
 
-  constructor() { }
+  movie: Movie = null;
+
+  constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.movie = this.activeRoute.snapshot.data.film;
   }
 
 }
