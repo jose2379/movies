@@ -3,11 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'films',
-    pathMatch: 'full'
-  },
-  {
     path: 'films',
     loadChildren: () => import('./pages/films/films.module').then( m => m.FilmsPageModule)
   },
@@ -20,10 +15,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/companies/companies.module').then( m => m.CompaniesPageModule)
   },
   {
+    path: 'error',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'films',
     pathMatch: 'full'
   }
+
 ];
 
 @NgModule({

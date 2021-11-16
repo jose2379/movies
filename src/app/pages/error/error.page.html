@@ -1,0 +1,15 @@
+<ion-content class="ion-padding">
+  <ion-card class="ion-text-center">
+    <ion-card-header>
+      <ion-card-subtitle>{{ 'error_page.subtitle' | translate }}</ion-card-subtitle>
+      <ion-card-title>{{ 'error_page.header' | translate }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h5 [innerHTML]="'error_page.message' | translate"></h5>
+      <hr>
+      <ion-toolbar class="ion-padding">
+        <ion-button color="success" expand="full" routerLink="/films">{{ 'error_page.reload_button' | translate }}</ion-button>
+      </ion-toolbar>
+    </ion-card-content>
+  </ion-card>  
+</ion-content>

@@ -45,5 +45,11 @@
       "save": "Guardar",
       "cancel": "Cancelar"
     }
+  },
+  "error_page": {
+    "subtitle": "¡Atención!",
+    "header": "Hay un problema con el servidor de la API",
+    "message": "Lanzando el <i>npm run json-server</i> se puede solucionar",
+    "reload_button": "Volver a cargar"
   }
 }
