@@ -1,5 +1,79 @@
-<app-header title="Nueva Película" [backButton]="true"></app-header>
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons *ngIf="!movie else menuTemplate" slot="start">
+            <ion-back-button defaultHref="films" color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-capitalize">{{headerTitle}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ng-template #menuTemplate>
+    <ion-button slot="start" (click)="onModalClose()" fill="clear">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+    </ion-button>
+</ng-template>
 
 <ion-content class="ion-padding">
-Formulario para añadir la nueva película
+    <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+        <ion-item lines="full">
+            <ion-label position="stacked">{{ 'forms.movies.title' | translate }}</ion-label>
+            <ion-input type="text" required formControlName="title" [placeholder]="'forms.movies.title' | translate"></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+            <ion-label position="stacked">{{ 'forms.movies.poster' | translate }}</ion-label>
+            <ion-input type="text" formControlName="poster" [placeholder]="'forms.movies.poster' | translate"></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+             <ion-label position="stacked">{{ 'forms.movies.genre.label' | translate }}</ion-label>
+             <ion-input type="text" required formControlName="newGenre" [placeholder]="'forms.movies.genre.placeholder' | translate"></ion-input>
+             <ion-icon slot="end" name="add" (click)="onAddGenre()"></ion-icon>
+         </ion-item>
+         <ion-chip *ngFor="let addedGenre of genres.controls; let i=index" color="primary" mode="ios" outline="true">
+             <ion-label>{{ addedGenre.value}}</ion-label>
+             <ion-icon name="close-circle" (click)="deleteGenre(i)"></ion-icon>
+         </ion-chip>
+
+         <ion-item lines="full">
+              <ion-label position="stacked">{{ 'forms.movies.actor.label' | translate }}</ion-label>
+              <ion-spinner *ngIf="!actorOptions.length" name="dots" color="primary" slot="start"></ion-spinner>
+              <ion-select multiple="true" formControlName="actors" [placeholder]="'forms.movies.actor.placeholder' | translate">
+                <ion-select-option *ngFor="let option of actorOptions" [value]="option.key">
+                  {{option.value}}
+                </ion-select-option>
+              </ion-select>
+          </ion-item>
+
+         <ion-item lines="full">
+              <ion-label position="stacked">{{ 'forms.movies.company.label' | translate }}</ion-label>
+              <ion-spinner *ngIf="!companyOptions.length" name="dots" color="primary" slot="start"></ion-spinner>
+              <ion-select formControlName="company" [placeholder]="'forms.movies.company.placeholder' | translate">
+                <ion-select-option *ngFor="let option of companyOptions" [value]="option.key">
+                  {{option.value}}
+                </ion-select-option>
+              </ion-select>
+          </ion-item>
+
+        <ion-item lines="full">
+            <ion-label position="stacked">{{ 'forms.movies.year' | translate }}</ion-label>
+            <ion-datetime display-format="YYYY" formControlName="year" [placeholder]="'forms.movies.year' | translate"></ion-datetime>
+        </ion-item>
+
+        <ion-item lines="full">
+            <ion-label position="stacked">{{ 'forms.movies.duration' | translate }}</ion-label>
+            <ion-input type="number" formControlName="duration" [placeholder]="'forms.movies.duration' | translate"></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+            <ion-label position="stacked">{{ 'forms.movies.rating' | translate }}</ion-label>
+            <ion-input type="number" formControlName="imdbRating" [max]="'10'" [min]="0" [placeholder]="'forms.movies.rating' | translate"></ion-input>
+        </ion-item>
+    </form>
 </ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+            <ion-button type="submit" color="danger" expand="block">{{ 'forms.buttons.save' | translate }}</ion-button>
+        </form>
+    </ion-toolbar>
+</ion-footer>
