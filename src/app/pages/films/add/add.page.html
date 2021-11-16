@@ -29,7 +29,7 @@
              <ion-input type="text" required formControlName="newGenre" [placeholder]="'forms.movies.genre.placeholder' | translate"></ion-input>
              <ion-icon slot="end" name="add" (click)="onAddGenre()"></ion-icon>
          </ion-item>
-         <ion-chip *ngFor="let addedGenre of genres.controls; let i=index" color="primary" mode="ios" outline="true">
+         <ion-chip *ngFor="let addedGenre of genres.controls; let i=index; trackBy: trackByFunction" color="primary" mode="ios" outline="true">
              <ion-label>{{ addedGenre.value}}</ion-label>
              <ion-icon name="close-circle" (click)="deleteGenre(i)"></ion-icon>
          </ion-chip>
@@ -38,7 +38,7 @@
               <ion-label position="stacked">{{ 'forms.movies.actor.label' | translate }}</ion-label>
               <ion-spinner *ngIf="!actorOptions.length" name="dots" color="primary" slot="start"></ion-spinner>
               <ion-select multiple="true" formControlName="actors" [placeholder]="'forms.movies.actor.placeholder' | translate">
-                <ion-select-option *ngFor="let option of actorOptions" [value]="option.key">
+                <ion-select-option *ngFor="let option of actorOptions; trackBy: trackByFunction" [value]="option.key">
                   {{option.value}}
                 </ion-select-option>
               </ion-select>
@@ -48,7 +48,7 @@
               <ion-label position="stacked">{{ 'forms.movies.company.label' | translate }}</ion-label>
               <ion-spinner *ngIf="!companyOptions.length" name="dots" color="primary" slot="start"></ion-spinner>
               <ion-select formControlName="company" [placeholder]="'forms.movies.company.placeholder' | translate">
-                <ion-select-option *ngFor="let option of companyOptions" [value]="option.key">
+                <ion-select-option *ngFor="let option of companyOptions; trackBy: trackByFunction" [value]="option.key">
                   {{option.value}}
                 </ion-select-option>
               </ion-select>

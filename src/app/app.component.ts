@@ -17,4 +17,7 @@ export class AppComponent {
     this.translate.setDefaultLang('es');
     this.menuOptions = this.dataService.getMenuOptions();
   }
+  onSplitPaneVisible(event): void {
+    // TODO => gestionar una variable global para mostrar el icono de menú del header
+  }
 }

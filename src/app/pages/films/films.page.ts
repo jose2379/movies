@@ -21,4 +21,11 @@ export class FilmsPage implements OnInit {
     this.movies = this.dataService.getMovies();
   }
 
+  trackByMovieFunction(index: number, element: Movie): number {
+    return element ? element.id : null;
+  }
+  trackByGeneroFunction(index: number) :number {
+    return index;
+  }
+
 }

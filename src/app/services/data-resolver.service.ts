@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
@@ -14,7 +14,7 @@ export class DataResolverService implements Resolve<any> {
 
   waitMessage: string;
 
-  constructor(private httpClient: HttpClient, private loadingController: LoadingController, private translate: TranslateService) {
+  constructor(private httpClient: HttpClient, private loadingController: LoadingController, private translate: TranslateService, private route: Router) {
     this.translate.get('loader.waitMessage').subscribe(waitMessage => this.waitMessage = waitMessage);
    }
 
@@ -32,6 +32,11 @@ export class DataResolverService implements Resolve<any> {
         .pipe(
           tap(() => {
             loading.dismiss();
+          }),
+          catchError(err => {
+            loading.dismiss();
+            this.route.navigateByUrl('films');
+            return throwError(err)
           })
         );
   }
