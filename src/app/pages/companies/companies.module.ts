@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
 
 import { CompaniesPageRoutingModule } from './companies-routing.module';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 import { CompaniesPage } from './companies.page';
-import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     CompaniesPageRoutingModule,
-    ComponentsModule
+    SharedModule,
+    TranslateModule.forChild()
   ],
   declarations: [CompaniesPage]
 })

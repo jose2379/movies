@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DataResolverService } from 'src/app/services/data-resolver.service';
 
 import { FilmsPage } from './films.page';
 
@@ -9,12 +10,15 @@ const routes: Routes = [
     component: FilmsPage
   },
   {
-    path: 'details',
-    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
-  },
-  {
     path: 'add',
     loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
+  },
+  {
+    path: ':pathSection/:id',
+    resolve: {
+      film: DataResolverService
+    },
+    loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
   }
 ];
 

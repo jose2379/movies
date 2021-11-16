@@ -1,5 +1,72 @@
-<app-header title="Titanic" [backButton]="true"></app-header>
+<app-header [title]="headerTitle" [backButton]="true"></app-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-img *ngIf="movie.poster" [src]="movie.poster"></ion-img>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-label>
+            <h2>Puntuación</h2>
+            <p>{{movie.imdbRating}} / 10</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-label>
+            <h2 class="ion-text-right">Duración</h2>
+            <p class="ion-text-right">{{movie.duration}} min</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-label>
+            <h2>Actores</h2>
+            <p *ngFor="let actor of actors | async">{{actor.first_name}} {{actor.last_name}}</p>
+          </ion-label>
+          <ion-spinner *ngIf="(actors | async) === null" name="dots" color="primary"></ion-spinner>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-label>
+            <h2>Estudio</h2>
+            <p>{{companyName}}</p>
+          </ion-label>
+          <ion-spinner *ngIf="!companyName" name="dots" color="primary"></ion-spinner>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-label>
+            <h2>Géneros</h2>
+            <ion-chip *ngFor="let genero of movie.genre">
+              <ion-label color="primary">#{{genero}}</ion-label>
+            </ion-chip>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="settings-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start" (click)="onEditMovie()">
+      <ion-fab-button color="secondary">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="top" (click)="onDeleteMovie()">
+      <ion-fab-button color="danger">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 
 </ion-content>

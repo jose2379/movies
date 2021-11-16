@@ -1,0 +1,14 @@
+[
+  {
+    "name": "menu.options.films",
+    "path": "/films"
+  },
+  {
+    "name": "menu.options.actors",
+    "path": "/actors"
+  },
+  {
+    "name": "menu.options.companies",
+    "path": "/companies"
+  }
+]

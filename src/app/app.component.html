@@ -2,24 +2,14 @@
   <ion-menu side="start" menuId="main" contentId="main">
     <ion-header>
       <ion-toolbar color="primary">
-        <ion-title>Menu</ion-title>
+        <ion-title>{{ 'menu.title' | translate }}</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-menu-toggle>
-          <ion-item [routerLink]="'/films'" detail>
-            Películas
-          </ion-item>
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item [routerLink]="'/actors'" detail>
-            Actores
-          </ion-item>
-        </ion-menu-toggle>
-        <ion-menu-toggle>
-          <ion-item [routerLink]="'/companies'" detail>
-            Compañias
+        <ion-menu-toggle *ngFor="let option of menuOptions | async">
+          <ion-item [routerLink]="option.path" detail>
+            {{option.name | translate}}
           </ion-item>
         </ion-menu-toggle>
       </ion-list>

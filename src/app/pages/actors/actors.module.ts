@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ActorsPageRoutingModule } from './actors-routing.module';
 
 import { ActorsPage } from './actors.page';
-import { ComponentsModule } from 'src/app/components/components.module';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     ActorsPageRoutingModule,
-    ComponentsModule
+    SharedModule,
+    TranslateModule.forChild()
   ],
   declarations: [ActorsPage]
 })

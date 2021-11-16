@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
-import { HeaderComponent } from './header/header.component';
-
+import { HeaderComponent } from 'src/app/components/header/header.component';
 
 
 @NgModule({
@@ -14,4 +13,4 @@ import { HeaderComponent } from './header/header.component';
     IonicModule
   ]
 })
-export class ComponentsModule { }
+export class SharedModule { }

@@ -1,12 +1,37 @@
-<app-header title="Películas"></app-header>
+<app-header [title]="'menu.options.films' | translate "></app-header>
 
 <ion-content class="ion-padding">
-  Aquí vemos la lista de películas.
-  <ion-button [routerLink]="['/details']" routerLinkActive="router-link-active"  expand="block" fill="clear" shape="round">
-    Ver detalle película
-  </ion-button>
-  <ion-button [routerLink]="['/add']" routerLinkActive="router-link-active"  expand="block" fill="clear" shape="round">
-    <ion-icon slot="start" name="add"></ion-icon>
-    Add new films
-  </ion-button>
+  <ion-list>
+    <ion-card *ngFor="let movie of movies | async" [routerLink]="'movies/' + [movie.id]">
+      <ion-card-header>
+        <ion-card-title>{{movie.title}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-img *ngIf="movie.poster" [src]="movie.poster"></ion-img>
+        <ion-chip *ngFor="let genero of movie.genre">
+          <ion-label color="primary">#{{genero}}</ion-label>
+        </ion-chip>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-list *ngIf="(movies | async) === null">
+    <ion-card *ngFor="let item of skeletonMovies">
+      <ion-card-header>
+        <ion-skeleton-text animated class="skeleton_title"></ion-skeleton-text>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-skeleton-text animated class="skeleton_img"></ion-skeleton-text>
+        <ion-skeleton-text *ngFor="let chip of item" animated class="skeleton_chip"></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="add">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>
