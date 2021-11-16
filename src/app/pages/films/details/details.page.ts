@@ -62,6 +62,14 @@ export class DetailsPage implements OnInit {
     });
     await alertDelete.present();
   }
+
+  trackByActorFunction(index: number, actor: Actor) :number {
+    return actor.id;
+  }
+  trackByGeneroFunction(index: number) :number {
+    return index;
+  }
+  
   private confirmDelete():void {
     this.dataService.deleteMovie(this.movie.id).subscribe(_ => {
       this.route.navigateByUrl('/films');

@@ -2,14 +2,14 @@
 
 <ion-content class="ion-padding">
   <ion-list>
-    <ion-card *ngFor="let movie of movies | async" [routerLink]="'movies/' + [movie.id]">
+    <ion-card *ngFor="let movie of movies | async; trackBy: trackByMovieFunction" [routerLink]="'movies/' + [movie.id]">
       <ion-card-header>
         <ion-card-title>{{movie.title}}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
         <ion-img *ngIf="movie.poster" [src]="movie.poster"></ion-img>
-        <ion-chip *ngFor="let genero of movie.genre">
+        <ion-chip *ngFor="let genero of movie.genre; trackBy: trackByGeneroFunction">
           <ion-label color="primary">#{{genero}}</ion-label>
         </ion-chip>
       </ion-card-content>
