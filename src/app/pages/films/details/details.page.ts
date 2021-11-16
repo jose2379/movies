@@ -4,7 +4,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Actor, Movie } from 'src/app/interfaces/api.interface';
 import { DataService } from 'src/app/services/data.service';
-import { ModalEditComponent } from '../components/modal-edit/modal-edit.component';
+import { AddPage } from '../add/add.page';
 
 @Component({
   selector: 'app-details',
@@ -29,10 +29,17 @@ export class DetailsPage implements OnInit {
     this.movie = this.activeRoute.snapshot.data.film;
     this.headerTitle = `${this.movie.title} (${this.movie.year})`;
     this.actors = this.dataService.getActorsByIds(this.movie.actors);
-    this.dataService.getEstudioWithFilmId(this.movie.id).subscribe(comp => this.companyName = comp.name);
+    this.dataService.getEstudioWithFilmId(this.movie.id).subscribe(comp => this.companyName = comp?.name);
   }
   async onEditMovie(): Promise<void> {
-    console.log('onEditMovie');
+    const modalEdit = await this.modalController.create({
+      component: AddPage,
+      backdropDismiss: true,
+      componentProps: {
+        movie: this.movie
+      }
+    });
+    await modalEdit.present();
   }
   async onDeleteMovie(): Promise<void> {
     console.log('onDeleteMovie');

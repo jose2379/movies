@@ -13,6 +13,8 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) { }
 
+  POST_OPTIONS = {headers: { 'content-type': 'application/json'}}
+  
   getMenuOptions(): Observable<MenuOption[]>{
     return this.httpClient.get<MenuOption[]>('/assets/data/menu-options.json');
   }
@@ -20,8 +22,20 @@ export class DataService {
   getMovies(): Observable<Movie[]> {
     return this.httpClient.get<Movie[]>(`${environment.apiUrl}/movies`);
   }
+  updateMovie(body: string, id: number): void {
+    this.httpClient.patch(`${environment.apiUrl}/movies/${id}`, body, this.POST_OPTIONS).subscribe();
+  }
+  addMovie(body: string): void {
+    this.httpClient.post(`${environment.apiUrl}/movies`, body, this.POST_OPTIONS).subscribe();
+  }
+  deleteMovie(id: number) {
+    return this.httpClient.delete(`${environment.apiUrl}/movies/${id}`, this.POST_OPTIONS);
+  }
   getCompanies(): Observable<Company[]> {
     return this.httpClient.get<Company[]>(`${environment.apiUrl}/companies`);
+  }
+  updateCompany(body: string, id: number): void {
+    this.httpClient.patch(`${environment.apiUrl}/companies/${id}`, body, this.POST_OPTIONS).subscribe();
   }
   getEstudioWithFilmId(id: number): Observable<Company> {
     return this.getCompanies().pipe(

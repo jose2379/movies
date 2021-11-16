@@ -1,5 +1,6 @@
 {
   "menu": {
+    "title": "Menú",
     "options": {
       "films": "Películas",
       "actors": "Actores",
@@ -8,5 +9,41 @@
   },
   "loader": {
     "waitMessage": "Cargando. Por favor, espere."
+  },
+  "pages": {
+    "add": {
+      "prefix_title-edit": "Editar", 
+      "prefix_title-add": "Añadir"
+    }
+  },
+  "forms": {
+    "movies": {
+      "title": "Título",
+      "poster": "Poster (Url)",
+      "genre": {
+        "label": "Género",
+        "placeholder": "Añade un género"
+      },
+      "actor": {
+        "label": "Actores",
+        "placeholder": "Selecciona un Actor"
+      },
+      "company": {
+        "label": "Estudio",
+        "placeholder": "Selecciona un Estudio"
+      },
+      "year": "Año",
+      "duration": "Duración",
+      "rating": "Puntuación",
+      "alert": {
+        "delete_header": "Vas a borrar la película seleccionada",
+        "delete_message": "¿Estás seguro de ello?"
+      }
+    },
+    "buttons": {
+      "acept": "Aceptar",
+      "save": "Guardar",
+      "cancel": "Cancelar"
+    }
   }
 }
