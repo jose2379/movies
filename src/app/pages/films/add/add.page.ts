@@ -115,6 +115,10 @@ export class AddPage implements OnInit {
   get genres() {
     return this.movieForm.get('genre') as FormArray;
   }
+
+  trackByFunction(index: number) :number {
+    return index;
+  }
   
   private updateSelectedCompany(companyIdUpdating: number) {
     const newSelectedCompany = this.companiesList.find(company => company.id === companyIdUpdating);

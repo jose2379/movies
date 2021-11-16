@@ -26,7 +26,7 @@
         <ion-item lines="none" class="ion-no-padding">
           <ion-label>
             <h2>Actores</h2>
-            <p *ngFor="let actor of actors | async">{{actor.first_name}} {{actor.last_name}}</p>
+            <p *ngFor="let actor of actors | async; trackBy: trackByActorFunction">{{actor.first_name}} {{actor.last_name}}</p>
           </ion-label>
           <ion-spinner *ngIf="(actors | async) === null" name="dots" color="primary"></ion-spinner>
         </ion-item>
@@ -44,7 +44,7 @@
         <ion-item lines="none" class="ion-no-padding">
           <ion-label>
             <h2>Géneros</h2>
-            <ion-chip *ngFor="let genero of movie.genre">
+            <ion-chip *ngFor="let genero of movie.genre; trackBy: trackByGeneroFunction">
               <ion-label color="primary">#{{genero}}</ion-label>
             </ion-chip>
           </ion-label>
